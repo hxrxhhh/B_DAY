@@ -61,3 +61,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Rest of your existing script.js code...
 });
+// Image Zoom System
+document.querySelectorAll('.gallery-image').forEach(img => {
+    let isZoomed = false;
+    
+    img.addEventListener('click', () => {
+        isZoomed = !isZoomed;
+        img.classList.toggle('zoomed', isZoomed);
+        
+        if(isZoomed) {
+            document.body.style.overflow = 'hidden';
+            img.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Mobile double-tap support
+    let lastTap = 0;
+    img.addEventListener('touchend', (e) => {
+        const currentTime = new Date().getTime();
+        const tapLength = currentTime - lastTap;
+        if (tapLength < 500 && tapLength > 0) {
+            e.preventDefault();
+            img.click();
+        }
+        lastTap = currentTime;
+    });
+});
+
+// Close zoom when clicking outside
+document.addEventListener('click', (e) => {
+    if(!e.target.closest('.gallery-image')) {
+        document.querySelectorAll('.gallery-image').forEach(img => {
+            img.classList.remove('zoomed');
+            document.body.style.overflow = 'auto';
+        });
+    }
+});

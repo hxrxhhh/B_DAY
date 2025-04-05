@@ -131,3 +131,45 @@ body {
         height: 250px;
     }
 }
+/* Image Zoom System */
+.gallery-image {
+    cursor: zoom-in;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: center center;
+}
+
+.gallery-image.zoomed {
+    transform: scale(2.5);
+    cursor: zoom-out;
+    z-index: 1000;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.photo-card {
+    overflow: visible;
+    position: relative;
+    transition: z-index 0.3s;
+}
+
+.photo-card:hover {
+    z-index: 500;
+}
+
+.zoom-instruction {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.photo-card:hover .zoom-instruction {
+    opacity: 1;
+}
