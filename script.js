@@ -1,57 +1,63 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const startBtn = document.getElementById('startBtn');
     const music = document.getElementById('birthdayMusic');
-    let isMusicPlaying = false;
+    const musicBtn = document.getElementById('musicBtn');
+    let isPlaying = false;
 
     // Initialize Confetti
-    const confettiSettings = { target: 'confetti' };
-    const confetti = new ConfettiGenerator(confettiSettings);
-    confetti.render();
+    const confettiSettings = {
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    };
 
-    // Start Experience
-    startBtn.addEventListener('click', () => {
-        startBtn.style.display = 'none';
-        music.play();
-        isMusicPlaying = true;
-        document.body.classList.add('party-started');
+    // Music Control
+    musicBtn.addEventListener('click', () => {
+        if (isPlaying) {
+            music.pause();
+            musicBtn.textContent = '🎵 Play Music';
+        } else {
+            music.play();
+            musicBtn.textContent = '🎵 Pause Music';
+            confetti(confettiSettings);
+        }
+        isPlaying = !isPlaying;
     });
 
-    // Image Zoom
-    document.querySelectorAll('.gallery-img').forEach(img => {
+    // Image Click Handler
+    document.querySelectorAll('.photo').forEach(img => {
         img.addEventListener('click', () => {
             img.classList.toggle('zoomed');
         });
     });
-});
 
-// Google Drive Upload
-async function uploadToDrive() {
-    const fileInput = document.getElementById('driveUpload');
-    const status = document.getElementById('uploadStatus');
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpCjeSoyptqV3U-sgDBMDgpnTPaDPZwl77jAAVsx2wYYJjKMWFXYS5mxFLK3Mpa4ZHog/exec';
-
-    if (!fileInput.files[0]) {
-        status.textContent = "Please select a photo first! 📸";
-        return;
-    }
-
-    try {
-        status.textContent = "Uploading to Barsha's Memory Book... 📤";
-        const formData = new FormData();
-        formData.append('file', fileInput.files[0]);
-
-        const response = await fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            body: formData
-        });
-
-        if (response.ok) {
-            status.innerHTML = "Success! 🎉 Your photo is now part of Barsha's birthday memories!";
-            fileInput.value = '';
-        } else {
-            status.textContent = "Oops! Please try again later.";
+    // Start music on first click
+    document.body.addEventListener('click', () => {
+        if (music.paused && !isPlaying) {
+            music.play();
+            musicBtn.textContent = '🎵 Pause Music';
+            isPlaying = true;
+            confetti(confettiSettings);
         }
-    } catch (error) {
-        status.textContent = `Error: ${error.message}`;
-    }
-}
+    }, { once: true });
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const music = document.getElementById('birthdayMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    let isPlaying = false;
+    let confettiSystem = null;
+
+    // Music Control
+    musicBtn.addEventListener('click', () => {
+        if (isPlaying) {
+            music.pause();
+            musicBtn.textContent = '🎵 Play Music';
+        } else {
+            music.play();
+            musicBtn.textContent = '🎵 Pause Music';
+            if(!confettiSystem) confettiSystem = new Confetti();
+        }
+        isPlaying = !isPlaying;
+    });
+
+    // Rest of your existing script.js code...
+});

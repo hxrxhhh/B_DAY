@@ -14,43 +14,54 @@
     </audio>
 
     <div class="container">
-        <div class="confetti"></div>
+        <!-- Confetti Canvas -->
+        <canvas id="confettiCanvas"></canvas>
         
-        <div class="header animate-float">
-            <h1>🎉 Happy Birthday Barsha! 🎂</h1>
-            <p>My Amazing Best Friend!</p>
-            <button id="startBtn" class="party-btn">Start the Party! 🎈</button>
+        <!-- Main Content -->
+        <div class="header">
+            <h1 class="title animate-float">🎉 Happy Birthday Barsha! 🎂</h1>
+            <p class="subtitle">My Dearest Best Friend!</p>
+            <button id="startButton" class="party-button">Start Celebration!</button>
         </div>
 
-        <div class="gallery">
-            <div class="photo-frame">
-                <img src="images/barsha1.jpg" class="gallery-img" alt="Barsha's memory">
-                <div class="photo-caption">Always Smiling 😊</div>
+        <!-- Photo Gallery -->
+        <div class="gallery-grid">
+            <div class="photo-card animate-pop">
+                <img src="images/barsha1.jpg" alt="Barsha's Memory 1" class="gallery-image">
+                <div class="caption">Beautiful Moments Together 💖</div>
             </div>
-            <!-- Add more images similarly -->
-        </div>
-
-        <div class="upload-section">
-            <h2>Share Your Wishes & Photos 📸</h2>
-            <div class="upload-box">
-                <input type="file" id="driveUpload" accept="image/*" hidden>
-                <label for="driveUpload" class="upload-btn">Choose Photo</label>
-                <button onclick="uploadToDrive()" class="upload-btn">Upload to Drive</button>
-                <p id="uploadStatus"></p>
+            <div class="photo-card animate-pop">
+                <img src="images/barsha2.jpg" alt="Barsha's Memory 2" class="gallery-image">
+                <div class="caption">Friendship Goals 🌟</div>
+            </div>
+            <div class="photo-card animate-pop">
+                <img src="images/barsha3.jpg" alt="Barsha's Memory 3" class="gallery-image">
+                <div class="caption">Forever Besties 👯</div>
             </div>
         </div>
 
-        <div class="message-box">
-            <h2>Why Barsha is Awesome?</h2>
-            <ul class="qualities">
-                <li>💖 Best Friend Material</li>
-                <li>🎯 Always Supportive</li>
-                <li>✨ Makes Every Day Brighter</li>
-            </ul>
+        <!-- Birthday Message -->
+        <div class="message-box animate-fade">
+            <h2>To My Amazing Friend...</h2>
+            <div class="message-content">
+                <p>On your special day, I want you to know:</p>
+                <ul class="special-list">
+                    <li>✨ You light up every room</li>
+                    <li>💎 Your friendship is priceless</li>
+                    <li>🌸 You deserve all the happiness</li>
+                    <li>🎯 You're my forever confidante</li>
+                </ul>
+            </div>
         </div>
+
+        <!-- Music Control -->
+        <button id="musicControl" class="music-button">
+            🎵 Play Birthday Theme
+        </button>
     </div>
 
+    <!-- Scripts -->
+    <script src="confetti.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
