@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Barsha! 🎂</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <audio id="birthdayMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support audio
+    </audio>
+
+    <div class="container">
+        <div class="confetti"></div>
+        
+        <div class="header animate-float">
+            <h1>🎉 Happy Birthday Barsha! 🎂</h1>
+            <p>My Amazing Best Friend!</p>
+            <button id="startBtn" class="party-btn">Start the Party! 🎈</button>
+        </div>
+
+        <div class="gallery">
+            <div class="photo-frame">
+                <img src="images/barsha1.jpg" class="gallery-img" alt="Barsha's memory">
+                <div class="photo-caption">Always Smiling 😊</div>
+            </div>
+            <!-- Add more images similarly -->
+        </div>
+
+        <div class="upload-section">
+            <h2>Share Your Wishes & Photos 📸</h2>
+            <div class="upload-box">
+                <input type="file" id="driveUpload" accept="image/*" hidden>
+                <label for="driveUpload" class="upload-btn">Choose Photo</label>
+                <button onclick="uploadToDrive()" class="upload-btn">Upload to Drive</button>
+                <p id="uploadStatus"></p>
+            </div>
+        </div>
+
+        <div class="message-box">
+            <h2>Why Barsha is Awesome?</h2>
+            <ul class="qualities">
+                <li>💖 Best Friend Material</li>
+                <li>🎯 Always Supportive</li>
+                <li>✨ Makes Every Day Brighter</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
